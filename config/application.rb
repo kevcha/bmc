@@ -24,7 +24,6 @@ module Bmc
       generate.routing_specs false
       generate.stylesheets false
       generate.javascripts false
-      generate.test_framework :rspec
       generate.view_specs false
     end
 
