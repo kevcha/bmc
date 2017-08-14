@@ -10,22 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170814125245) do
+ActiveRecord::Schema.define(version: 20170814135617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "assets", force: :cascade do |t|
-    t.string   "crypto",                               null: false
-    t.integer  "start_price_cents",    default: 0,     null: false
-    t.string   "start_price_currency", default: "USD", null: false
-    t.integer  "exit_price_cents",     default: 0,     null: false
-    t.string   "exit_price_currency",  default: "USD", null: false
-    t.float    "distribution",                         null: false
-    t.integer  "report_id",                            null: false
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-    t.integer  "coin_id",                              null: false
+    t.string   "crypto",                                 null: false
+    t.float    "distribution",                           null: false
+    t.integer  "report_id",                              null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.integer  "coin_id",                                null: false
+    t.decimal  "start_price",  precision: 16, scale: 10
+    t.decimal  "exit_price",   precision: 16, scale: 10
     t.index ["coin_id"], name: "index_assets_on_coin_id", using: :btree
     t.index ["report_id"], name: "index_assets_on_report_id", using: :btree
   end
