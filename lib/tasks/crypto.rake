@@ -7,13 +7,18 @@ namespace :crypto do
     response = RestClient.get('https://www.cryptocompare.com/api/data/coinlist/')
     response = JSON.parse(response)
 
+    count = 0
     response['Data'].each do |_, crypto|
-      Coin.create(
-        url: crypto['Url'],
-        image_url: crypto['ImageUrl'],
-        name: crypto['Name'],
-        coin_name: crypto['CoinName']
-      )
+      if Coin.create(
+          url: crypto['Url'],
+          image_url: crypto['ImageUrl'],
+          name: crypto['Name'],
+          coin_name: crypto['CoinName']
+        )
+        count + 1
+      end
     end
+
+    puts "#{count} coin(s) created"
   end
 end
