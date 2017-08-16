@@ -9,14 +9,14 @@ namespace :crypto do
 
     count = 0
     response['Data'].each do |_, crypto|
-      if Coin.create(
-          url: crypto['Url'],
-          image_url: crypto['ImageUrl'],
-          name: crypto['Name'],
-          coin_name: crypto['CoinName']
-        )
-        count + 1
-      end
+      coin = Coin.new(
+        url: crypto['Url'],
+        image_url: crypto['ImageUrl'],
+        name: crypto['Name'],
+        coin_name: crypto['CoinName']
+      )
+
+      count + 1 if coin.save
     end
 
     puts "#{count} coin(s) created"
