@@ -7,6 +7,6 @@ class Report < ApplicationRecord
 
   def close!
     assets.each(&:close!)
-    update_attribute(state: 'closed')
+    update_attribute(:state, 'closed')
   end
 end
