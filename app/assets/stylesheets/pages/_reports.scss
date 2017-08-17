@@ -1,0 +1,40 @@
+.reports.index {
+  h4 {
+    padding-left: 20px;
+  }
+
+  .report-details {
+    background: #ffffff;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.07);
+    margin-bottom: 2em;
+    padding: 20px;
+  }
+
+  .report {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 15px;
+
+    &:last-child {
+      padding-bottom: 0px;
+    }
+
+    .report-status {
+      flex: 0 0 100px;
+    }
+
+    .report-dates {
+      flex: 1 1 auto;
+    }
+
+    .report-assets-number {
+      flex: 0 0 150px;
+    }
+
+    .report-delta {
+      flex: 0 0 80px;
+      text-align: center;
+    }
+  }
+}

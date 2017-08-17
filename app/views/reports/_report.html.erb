@@ -1,0 +1,20 @@
+<div class="report">
+  <div class="report-status">
+    <span class="label label-<%= report.closed? ? 'success' : 'info' %>"><%= report.state %></span>
+  </div>
+  <div class="report-dates">
+    <%= l(report.created_at.to_date, format: :short) %>
+    <%= icon('long-arrow-right') %>
+    <% if report.closed? %>
+      <%= l(report.closed_at.to_date, format: :short) %>
+    <% end %>
+  </div>
+  <span class="report-assets-number"><%= report.assets.count %> assets</span>
+  <span class="report-delta">
+    <% if report.closed? %>
+      <%= report.delta.round(2) %> %</span>
+    <% else %>
+      -
+    <% end %>
+  </span>
+</div>

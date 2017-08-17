@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="col-xs-12 col-sm-8">
+      <div class="fund">
+        <h4>Retirement</h4>
+        <div class="report-details">
+          <% @retirements.each do |report| %>
+            <%= render report %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="fund">
+        <h4>Dynamic</h4>
+        <div class="report-details">
+          <% @dynamics.each do |report| %>
+            <%= render report %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="fund">
+        <h4>Extrem</h4>
+        <div class="report-details">
+          <% @extrems.each do |report| %>
+            <%= render report %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
