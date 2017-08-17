@@ -2,7 +2,7 @@ class Asset < ApplicationRecord
   belongs_to :report
   belongs_to :coin
 
-  before_validation :set_start_price
+  before_create :set_start_price
 
   validates :start_price, presence: true
   validates :report, presence: true
@@ -11,6 +11,15 @@ class Asset < ApplicationRecord
 
   def close!
     set_exit_price
+  end
+
+  def delta
+    100 * (exit_price - start_price) / start_price
+  end
+
+  def exit_price_for(invest)
+    quantity = (invest * distribution / 100) / start_price
+    quantity * exit_price
   end
 
   private
