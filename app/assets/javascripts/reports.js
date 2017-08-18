@@ -3,7 +3,7 @@ $(function () {
     if ($(this).next().hasClass('active')) {
       $(this).next().removeClass('active');
     } else {
-      $('.assets').removeClass('active');
+      $('.asset-wrapper').removeClass('active');
       $(this).next().addClass('active');
     }
   });
