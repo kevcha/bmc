@@ -14,7 +14,9 @@ class Asset < ApplicationRecord
   end
 
   def delta
-    100 * (exit_price - start_price) / start_price
+    if exit_price.present?
+      100 * (exit_price - start_price) / start_price
+    end
   end
 
   def exit_price_for(invest)

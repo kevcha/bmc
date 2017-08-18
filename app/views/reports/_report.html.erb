@@ -12,9 +12,37 @@
   <span class="report-assets-number"><%= report.assets.count %> assets</span>
   <span class="report-delta">
     <% if report.closed? %>
-      <%= report.delta.round(2) %> %</span>
+      <strong class="<%= report.delta > 0 ? 'rised' : 'falled' %>"><%= report.delta.round(2) %> %</strong>
     <% else %>
       -
     <% end %>
   </span>
+</div>
+
+<div class="assets">
+  <% report.assets.each do |asset| %>
+    <div class="asset">
+      <span class="asset-distribution">
+        <%= asset.distribution %> %
+      </span>
+      <span class="asset-details">
+        <%= asset.coin.coin_name %>
+      </span>
+      <span class="asset-price start-price">
+        $ <%= asset.start_price.to_s %>
+      </span>
+      <%= icon('long-arrow-right') %>
+      <% if asset.exit_price %>
+        <span class="asset-price">
+          $ <%= asset.exit_price.to_s %>
+        </span>
+        <span class="asset-delta <%= asset.delta > 0 ? 'rised' : 'falled' %>">
+          <%= asset.delta.round(2) %> %
+        </span>
+      <% else %>
+        <span class="asset-price">-</span>
+        <span class="asset-delta">-</span>
+      <% end %>
+    </div>
+  <% end %>
 </div>

@@ -7,17 +7,25 @@
     background: #ffffff;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.07);
     margin-bottom: 2em;
-    padding: 20px;
+  }
+
+  .rised {
+    color: $green;
+  }
+
+  .falled {
+    color: $red;
   }
 
   .report {
     align-items: center;
     display: flex;
     justify-content: space-between;
-    padding-bottom: 15px;
+    padding: 10px 20px;
 
-    &:last-child {
-      padding-bottom: 0px;
+    &:hover {
+      background-color: #d8eadd;
+      cursor: pointer;
     }
 
     .report-status {
@@ -34,7 +42,17 @@
 
     .report-delta {
       flex: 0 0 80px;
-      text-align: center;
+      text-align: right;
+    }
+  }
+
+  .assets {
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height ease 0.5s;
+
+    &.active {
+      max-height: 100vh;
     }
   }
 }
