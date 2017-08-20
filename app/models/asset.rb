@@ -2,7 +2,7 @@ class Asset < ApplicationRecord
   belongs_to :report
   belongs_to :coin
 
-  before_create :set_start_price
+  before_validation :set_start_price
 
   validates :start_price, presence: true
   validates :report, presence: true
@@ -27,7 +27,7 @@ class Asset < ApplicationRecord
   private
 
   def set_start_price
-    self.start_price = current_price
+    self.start_price = current_price if start_price.blank?
   end
 
   def set_exit_price
@@ -36,7 +36,6 @@ class Asset < ApplicationRecord
   end
 
   def current_price
-    binding.pry if coin.blank?
     result = Cryptocompare::Price.find(coin.name, 'USD')
     result[coin.name]['USD']
   end
