@@ -29,10 +29,8 @@ class BmcScrapper
   def open_new_report
     new_report = Report.create(fund: @fund)
     @report.assets.each do |asset|
-      split = asset[:crypto].scan(/(\w+)/)
-      coin_name = split[0][0]
-      name = split[1][0]
-      coin = Coin.where('coin_name ilike ? OR name ilike ?', coin_name, name).first
+      split = asset[:crypto].scan(/(\w+)/).flatten
+      coin = Coin.where('coin_name IN (?) OR name in (?)', split, split).first
       Asset.create(
         crypto: asset[:crypto],
         report: new_report,
